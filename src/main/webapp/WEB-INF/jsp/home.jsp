@@ -8,6 +8,6 @@
 </head>
 <body>
 	<a href="/recipes" class="btn btn-success">Listar Receitas</a></br>
-	<a href="/recipes/create">Criar Nova Receita</a>
+	<a href="/recipes/create" class="btn btn-success">Criar Nova Receita</a>
 </body>
 </html>
