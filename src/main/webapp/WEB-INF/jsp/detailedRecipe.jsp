@@ -5,22 +5,22 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Recipe ${recipe.id}</title>
+<title>Recipe ${recipe.externalId}</title>
 </head>
 <body>
-	<h1>${recipe.titulo}</h1>
+	<h1>${recipe.title}</h1>
 	<b>Problema:</b>
-	<p>${recipe.problema}</p>
+	<p>${recipe.problem}</p>
 	<b>Solução:</b>
-	<p>${recipe.solucao}</p>
+	<p>${recipe.solution}</p>
 	<b>Autor:</b>
-	<p>${recipe.autor}</p>
+	<p>${recipe.author}</p>
 	<b>Data:</b>
-	<p>${recipe.data}</p>
+	<p>${recipe.creationTimestamp}</p>
 
 
 <input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
-<input type="button" value="Eliminar Receita" class="btn btn-danger" href="/lists/${recipe.id}/delete"/>
+<input type="button" value="Eliminar Receita" class="btn btn-danger" href="/lists/${recipe.externalId}/delete"/>
 
 
 </body>

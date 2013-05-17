@@ -1,7 +1,10 @@
 package pt.ulht.es.cookbook.controller;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import java.util.Map;
 
@@ -22,7 +25,8 @@ public class RecipeController {
     @RequestMapping(method=RequestMethod.GET, value="/recipes")
     public String listRecipes(Model model) {
 
-       Collection<Recipe> recipes = CookbookManager.getRecipes();
+       List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager.getInstance().getRecipeSet());
+       Collections.sort(recipes);
        model.addAttribute("recipes", recipes);
        return "listRecipes";
     }
@@ -38,7 +42,7 @@ public class RecipeController {
     @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
     public String showRecipe(Model model, @PathVariable String id) {
 
-        Recipe recipe = CookbookManager.getRecipe(id);
+        Recipe recipe = AbstractDomainObject.fromExternalId(id);
         if(recipe != null){
         	model.addAttribute("recipe", recipe);
         	return "detailedRecipe";
@@ -63,11 +67,12 @@ public class RecipeController {
     	String problema = params.get("problema");
     	String solucao = params.get("solucao");
     	String autor = params.get("autor");
+    	String tags = params.get("tags");
     	
-    	Recipe recipe=new Recipe(titulo,problema,solucao,autor);
-    	CookbookManager.saveRecipe(recipe);
+    	Recipe recipe=new Recipe(titulo,problema,solucao,autor,tags);
     	
-    	return "redirect:/recipes/"+recipe.getId();
+    	
+    	return "redirect:/recipes/"+recipe.getExternalId();
     	
     }
     
