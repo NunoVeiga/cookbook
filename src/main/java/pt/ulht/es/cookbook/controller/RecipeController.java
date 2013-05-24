@@ -52,13 +52,13 @@ public class RecipeController {
     }
     
     
-//    @RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
-//	public String deleteTodoList(@PathVariable("id") String id) {
-//    	Recipe recipe = AbstractDomainObject.fromExternalId(id);
-//    	recipe.delete();
-//    	CookbookManager.getInstance().removeRecipe(recipe);
-//		return "redirect:/";
-//	}
+    @RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
+	public String deleteTodoList(@PathVariable("id") String id) {
+    	Recipe recipe = AbstractDomainObject.fromExternalId(id);
+    	recipe.delete();
+    	CookbookManager.getInstance().removeRecipe(recipe);
+		return "redirect:/recipes/";
+	}
      
     @RequestMapping(method=RequestMethod.POST, value="/recipes")
     public String createRecipe(@RequestParam Map<String,String> params){

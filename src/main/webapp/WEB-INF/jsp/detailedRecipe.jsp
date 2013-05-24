@@ -15,12 +15,14 @@
 	<p>${recipe.solution}</p>
 	<b>Autor:</b>
 	<p>${recipe.author}</p>
+	<b>Tags:</b>
+	<p>${recipe.tags}</p>
 	<b>Data:</b>
 	<p>${recipe.creationTimestamp}</p>
 
 
 <input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
-<input type="button" value="Eliminar Receita" class="btn btn-danger" href="/lists/${recipe.externalId}/delete"/>
+<input type="button" value="Eliminar Receita" class="btn btn-danger" onclick="JavaScript:window.location='/recipes/${recipe.externalId}/delete'"/>
 
 
 </body>
