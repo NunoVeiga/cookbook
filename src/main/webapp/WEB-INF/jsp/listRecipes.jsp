@@ -10,7 +10,7 @@
 <body>
 <ul>
 <c:forEach var="recipe" items='${recipes}'>
-	<a href="/recipes/${recipe.id}">abc${recipe.titulo}</a><br/>
+	<a href="/recipes/${recipe.externalId}">abc${recipe.title}</a><br/>
 </c:forEach>
 </ul>
 <input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/'"/>
