@@ -23,8 +23,8 @@ public class Recipe extends Recipe_Base implements Comparable<Recipe> {
     public RecipeVersion getLastVersion() {
     	List<RecipeVersion> recipeVersionList = new ArrayList<RecipeVersion>(getRecipeVersion());
     	Collections.sort(recipeVersionList);
-    	return recipeVersionList.get(recipeVersionList.size()-1)
-;    }
+    	return recipeVersionList.get(recipeVersionList.size()-1);
+    }
 
 	public int compareTo(Recipe o) {
 		return getLastVersion().getTitle().toLowerCase().compareTo(o.getLastVersion().getTitle().toLowerCase());

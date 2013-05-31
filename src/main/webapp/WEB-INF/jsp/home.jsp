@@ -5,6 +5,10 @@
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Homepage</title>
+<form class="form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
 </head>
 <body>
 	<a href="/recipes" class="btn btn-success">Listar Receitas</a></br>

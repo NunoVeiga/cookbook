@@ -8,17 +8,18 @@
 <title>Recipe ${recipe.externalId}</title>
 </head>
 <body>
-	<h1>${recipe.title}</h1>
+	
+	<h1>${recipe.lastVersion.title}</h1>
 	<b>Problema:</b>
-	<p>${recipe.problem}</p>
+	<p>${recipe.lastVersion.problem}</p>
 	<b>Solução:</b>
-	<p>${recipe.solution}</p>
+	<p>${recipe.lastVersion.solution}</p>
 	<b>Autor:</b>
-	<p>${recipe.author}</p>
+	<p>${recipe.lastVersion.author}</p>
 	<b>Tags:</b>
-	<p>${recipe.tags}</p>
+	<p>${recipe.lastVersion.tags}</p>
 	<b>Data:</b>
-	<p>${recipe.creationTimestamp}</p>
+	<p>${recipe.lastVersion.creationTimestamp}</p>
 
 
 <input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
