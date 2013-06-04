@@ -81,7 +81,7 @@ public class RecipeController {
 	public String searchRecipe(@RequestParam Map<String, String> params,Model model) {
 
 		String aprocurar = params.get("aprocurar");
-		List<String> palavrasaprocurar = new ArrayList<String>(Arrays.asList(aprocurar.split("\\s*,\\s*")));
+		List<String> palavrasaprocurar = new ArrayList<String>(Arrays.asList(aprocurar.split("\\s*(=>|,|\\s)\\s*")));
 		List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager
 				.getInstance().getRecipeSet());
 		List<Recipe> receitasdapesquisa=new ArrayList<Recipe>();
