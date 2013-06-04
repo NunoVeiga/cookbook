@@ -7,10 +7,10 @@
 <title>Homepage</title>
 </head>
 <body>
-	<a href="/recipes" class="btn btn-success">Listar Receitas</a></br>
+	<a href="/recipes"  class="btn btn-success">Listar Receitas</a></br>
 	<a href="/recipes/create" class="btn btn-success">Criar Nova Receita</a>
-	<form method="POST" action="/search" class="form-search">
-		<input type="text" class="input-large search-query">
+	<form method="POST" action="/" class="form-search">
+		<input type="text" name="aprocurar" class="input-large search-query">
 		<button type="submit" class="btn btn-search">Procurar Receita</button>
 	</form>
 	

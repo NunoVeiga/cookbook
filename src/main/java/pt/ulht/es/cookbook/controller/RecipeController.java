@@ -2,6 +2,7 @@ package pt.ulht.es.cookbook.controller;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -76,5 +77,59 @@ public class RecipeController {
     	
     }
     
+	@RequestMapping(method = RequestMethod.POST, value = "/")
+	public String searchRecipe(@RequestParam Map<String, String> params,Model model) {
+
+		String aprocurar = params.get("aprocurar");
+		List<String> palavrasaprocurar = new ArrayList<String>(Arrays.asList(aprocurar.split("\\s*,\\s*")));
+		List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager
+				.getInstance().getRecipeSet());
+		List<Recipe> receitasdapesquisa=new ArrayList<Recipe>();
+
+		for (int i = 0; i < palavrasaprocurar.size(); i++) {
+
+			for (int j = 0; j < recipes.size(); j++) {
+
+				if (recipes.get(j).getLastVersion().getTitle().toLowerCase()
+						.contains(palavrasaprocurar.get(i))) {
+					
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				} else if (recipes.get(j).getLastVersion().getProblem()
+						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+					
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				} else if (recipes.get(j).getLastVersion().getSolution()
+						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+					
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				} else if (recipes.get(j).getLastVersion().getAuthor()
+						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+					
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				} else if (recipes.get(j).getLastVersion().getTags()
+						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+					
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				}
+
+			}
+
+			
+		}
+		Collections.sort(receitasdapesquisa);
+		model.addAttribute("recipes", receitasdapesquisa);
+		
+		return "listRecipes";
+	}
     
 }
