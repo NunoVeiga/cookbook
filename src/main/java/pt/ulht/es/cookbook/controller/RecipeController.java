@@ -1,6 +1,5 @@
 package pt.ulht.es.cookbook.controller;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,69 +21,68 @@ import pt.ulht.es.cookbook.domain.Recipe;
 
 @Controller
 public class RecipeController {
-  
-    @RequestMapping(method=RequestMethod.GET, value="/recipes")
-    public String listRecipes(Model model) {
 
-       List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager.getInstance().getRecipeSet());
-       Collections.sort(recipes);
-       model.addAttribute("recipes", recipes);
-       return "listRecipes";
-    }
-    
-    
-    @RequestMapping(method=RequestMethod.GET, value="/recipes/create")
-    public String showRecipeCreationForm(){
-    	
-    	return "createRecipe";
-    }
-    
-    
-    @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
-    public String showRecipe(Model model, @PathVariable String id) {
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes")
+	public String listRecipes(Model model) {
 
-        Recipe recipe = AbstractDomainObject.fromExternalId(id);
-        if(recipe != null){
-        	model.addAttribute("recipe", recipe);
-        	return "detailedRecipe";
-        } else {
-        	return "recipeNotFound";
-        }
-    }
-    
-    
-    @RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
-	public String deleteTodoList(@PathVariable("id") String id) {
-    	Recipe recipe = AbstractDomainObject.fromExternalId(id);
-    	recipe.delete();
-    	CookbookManager.getInstance().removeRecipe(recipe);
-		return "redirect:/recipes/";
-	}
-     
-    @RequestMapping(method=RequestMethod.POST, value="/recipes")
-    public String createRecipe(@RequestParam Map<String,String> params){
-    	
-    	String titulo = params.get("titulo");
-    	String problema = params.get("problema");
-    	String solucao = params.get("solucao");
-    	String autor = params.get("autor");
-    	String tags = params.get("tags");
-    	
-    	Recipe recipe=new Recipe(titulo,problema,solucao,autor,tags);
-    	
-    	
-    	return "redirect:/recipes/"+recipe.getExternalId();
-    	
-    }
-    
-	@RequestMapping(method = RequestMethod.POST, value = "/")
-	public String searchRecipe(@RequestParam Map<String, String> params,Model model) {
-
-		String aprocurar = params.get("aprocurar");
-		List<String> palavrasaprocurar = new ArrayList<String>(Arrays.asList(aprocurar.split("\\s*(=>|,|\\s)\\s*")));
 		List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager
 				.getInstance().getRecipeSet());
-		List<Recipe> receitasdapesquisa=new ArrayList<Recipe>();
+		Collections.sort(recipes);
+		model.addAttribute("recipes", recipes);
+		return "listRecipes";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/create")
+	public String showRecipeCreationForm() {
+
+		return "createRecipe";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}")
+	public String showRecipe(Model model, @PathVariable String id) {
+
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		if (recipe != null) {
+			model.addAttribute("recipe", recipe);
+			return "detailedRecipe";
+		} else {
+			return "recipeNotFound";
+		}
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
+	public String deleteTodoList(@PathVariable("id") String id) {
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		recipe.delete();
+		CookbookManager.getInstance().removeRecipe(recipe);
+		return "redirect:/recipes/";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/recipes")
+	public String createRecipe(@RequestParam Map<String, String> params) {
+
+		String titulo = params.get("titulo");
+		String problema = params.get("problema");
+		String solucao = params.get("solucao");
+		String autor = params.get("autor");
+		String tags = params.get("tags");
+
+		Recipe recipe = new Recipe(titulo, problema, solucao, autor, tags);
+
+		return "redirect:/recipes/" + recipe.getExternalId();
+
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/")
+	public String searchRecipe(@RequestParam Map<String, String> params,
+			Model model) {
+
+		String aprocurar = params.get("aprocurar");
+		List<String> palavrasaprocurar = new ArrayList<String>(
+				Arrays.asList(aprocurar.split("\\s*(=>|,|\\s)\\s*")));
+		List<Recipe> recipes = new ArrayList<Recipe>(CookbookManager
+				.getInstance().getRecipeSet());
+		List<Recipe> receitasdapesquisa = new ArrayList<Recipe>();
 
 		for (int i = 0; i < palavrasaprocurar.size(); i++) {
 
@@ -92,31 +90,31 @@ public class RecipeController {
 
 				if (recipes.get(j).getLastVersion().getTitle().toLowerCase()
 						.contains(palavrasaprocurar.get(i))) {
-					
+
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getProblem()
 						.toLowerCase().contains(palavrasaprocurar.get(i))) {
-					
+
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getSolution()
 						.toLowerCase().contains(palavrasaprocurar.get(i))) {
-					
+
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getAuthor()
 						.toLowerCase().contains(palavrasaprocurar.get(i))) {
-					
+
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getTags()
 						.toLowerCase().contains(palavrasaprocurar.get(i))) {
-					
+
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
@@ -124,12 +122,31 @@ public class RecipeController {
 
 			}
 
-			
 		}
 		Collections.sort(receitasdapesquisa);
 		model.addAttribute("recipes", receitasdapesquisa);
-		
+
 		return "listRecipes";
 	}
-    
+
+	@RequestMapping(method = RequestMethod.GET, value = "/editrecipe")
+	public String editRecipe(@RequestParam Map<String, String> params,
+			Model model) {
+
+		String id = params.get("id");
+		String titulo = params.get("titulo");
+		String problema = params.get("problema");
+		String solucao = params.get("solucao");
+		String autor = params.get("autor");
+		String tags = params.get("tags");
+
+		model.addAttribute("titulo", titulo);
+		model.addAttribute("problema", problema);
+		model.addAttribute("solucao", solucao);
+		model.addAttribute("autor", autor);
+		model.addAttribute("tags", tags);
+
+		return "editRecipe";
+	}
+
 }

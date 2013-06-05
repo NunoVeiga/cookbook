@@ -21,9 +21,20 @@
 	<b>Data:</b>
 	<p>${recipe.lastVersion.creationTimestamp}</p>
 
+	<form method="GET" action="/editrecipe">
+	<input type="hidden" name="titulo" value="${recipe.lastVersion.title}"/>
+	<input type="hidden" name="problema" value="${recipe.lastVersion.problem}"/>
+	<input type="hidden" name="solucao" value="${recipe.lastVersion.solution}"/>
+	<input type="hidden" name="autor" value="${recipe.lastVersion.author}"/>
+	<input type="hidden" name="tags" value="${recipe.lastVersion.tags}"/>
+    <input type="submit" class="btn btn-success" value="Editar Receita"/>
+	</form>
 
-<input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
-<input type="button" value="Eliminar Receita" class="btn btn-danger" onclick="JavaScript:window.location='/recipes/${recipe.externalId}/delete'"/>
+
+	<input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
+    <input type="button" value="Eliminar Receita" class="btn btn-danger" onclick="JavaScript:window.location='/recipes/${recipe.externalId}/delete'"/>
+
+
 
 
 </body>
