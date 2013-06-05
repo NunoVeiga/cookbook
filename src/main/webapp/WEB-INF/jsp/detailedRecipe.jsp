@@ -22,6 +22,7 @@
 	<p>${recipe.lastVersion.creationTimestamp}</p>
 
 	<form method="GET" action="/editrecipe">
+	<input type="hidden" name="id" value="${recipe.externalId}"/>
 	<input type="hidden" name="titulo" value="${recipe.lastVersion.title}"/>
 	<input type="hidden" name="problema" value="${recipe.lastVersion.problem}"/>
 	<input type="hidden" name="solucao" value="${recipe.lastVersion.solution}"/>

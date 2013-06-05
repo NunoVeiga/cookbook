@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pt.ist.fenixframework.pstm.AbstractDomainObject;
 import pt.ulht.es.cookbook.domain.CookbookManager;
 import pt.ulht.es.cookbook.domain.Recipe;
+import pt.ulht.es.cookbook.domain.RecipeVersion;
 
 @Controller
 public class RecipeController {
@@ -140,6 +141,7 @@ public class RecipeController {
 		String autor = params.get("autor");
 		String tags = params.get("tags");
 
+		model.addAttribute("id", id);
 		model.addAttribute("titulo", titulo);
 		model.addAttribute("problema", problema);
 		model.addAttribute("solucao", solucao);
@@ -147,6 +149,24 @@ public class RecipeController {
 		model.addAttribute("tags", tags);
 
 		return "editRecipe";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/editrecipe")
+	public String createRecipeversion(@RequestParam Map<String, String> params) {
+
+		String id = params.get("id");
+		String titulo = params.get("titulo");
+		String problema = params.get("problema");
+		String solucao = params.get("solucao");
+		String autor = params.get("autor");
+		String tags = params.get("tags");
+
+		RecipeVersion versao= new RecipeVersion(titulo, problema, solucao, autor, tags);
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		recipe.addRecipeVersion(versao);
+
+		return "redirect:/recipes/" + recipe.getExternalId();
+
 	}
 
 }

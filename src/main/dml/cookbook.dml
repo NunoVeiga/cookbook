@@ -10,6 +10,7 @@ class RecipeVersion {
 	String problem;
 	String solution;
 	String author;
+	String difficulty;
 	String tags;
 	DateTime creationTimestamp;
 }
