@@ -8,8 +8,8 @@ import org.joda.time.DateTime;
 
 public class Recipe extends Recipe_Base implements Comparable<Recipe> {
     
-    public  Recipe(String title, String problem, String solution, String author, String tags) {
-    	RecipeVersion firstVersion = new RecipeVersion(title, problem, solution, author, tags);
+    public  Recipe(String title, String problem, String solution, String author,String difficulty, String tags) {
+    	RecipeVersion firstVersion = new RecipeVersion(title, problem, solution, author,difficulty, tags);
     	addRecipeVersion(firstVersion);
     	//    	setTitle(title);
 //    	setProblem(problem);

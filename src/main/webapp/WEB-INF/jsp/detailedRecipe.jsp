@@ -16,6 +16,8 @@
 	<p>${recipe.lastVersion.solution}</p>
 	<b>Autor:</b>
 	<p>${recipe.lastVersion.author}</p>
+	<b>Dificuldade:</b>
+	<p>${recipe.lastVersion.difficulty}</p>
 	<b>Tags:</b>
 	<p>${recipe.lastVersion.tags}</p>
 	<b>Data:</b>
@@ -27,6 +29,7 @@
 	<input type="hidden" name="problema" value="${recipe.lastVersion.problem}"/>
 	<input type="hidden" name="solucao" value="${recipe.lastVersion.solution}"/>
 	<input type="hidden" name="autor" value="${recipe.lastVersion.author}"/>
+	<input type="hidden" name="dificuldade" value="${recipe.lastVersion.difficulty}"/>
 	<input type="hidden" name="tags" value="${recipe.lastVersion.tags}"/>
     <input type="submit" class="btn btn-success" value="Editar Receita"/>
 	</form>

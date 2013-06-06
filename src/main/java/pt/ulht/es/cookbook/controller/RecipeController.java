@@ -66,9 +66,10 @@ public class RecipeController {
 		String problema = params.get("problema");
 		String solucao = params.get("solucao");
 		String autor = params.get("autor");
+		String dificuldade = params.get("dificuldade");
 		String tags = params.get("tags");
 
-		Recipe recipe = new Recipe(titulo, problema, solucao, autor, tags);
+		Recipe recipe = new Recipe(titulo, problema, solucao, autor,dificuldade, tags);
 
 		return "redirect:/recipes/" + recipe.getExternalId();
 
@@ -139,6 +140,7 @@ public class RecipeController {
 		String problema = params.get("problema");
 		String solucao = params.get("solucao");
 		String autor = params.get("autor");
+		String dificuldade = params.get("dificuldade");
 		String tags = params.get("tags");
 
 		model.addAttribute("id", id);
@@ -146,11 +148,12 @@ public class RecipeController {
 		model.addAttribute("problema", problema);
 		model.addAttribute("solucao", solucao);
 		model.addAttribute("autor", autor);
+		model.addAttribute("dificuldade",dificuldade);
 		model.addAttribute("tags", tags);
 
 		return "editRecipe";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/editrecipe")
 	public String createRecipeversion(@RequestParam Map<String, String> params) {
 
@@ -159,9 +162,11 @@ public class RecipeController {
 		String problema = params.get("problema");
 		String solucao = params.get("solucao");
 		String autor = params.get("autor");
+		String dificuldade = params.get("dificuldade");
 		String tags = params.get("tags");
 
-		RecipeVersion versao= new RecipeVersion(titulo, problema, solucao, autor, tags);
+		RecipeVersion versao = new RecipeVersion(titulo, problema, solucao,
+				autor, dificuldade, tags);
 		Recipe recipe = AbstractDomainObject.fromExternalId(id);
 		recipe.addRecipeVersion(versao);
 

@@ -4,11 +4,12 @@ import org.joda.time.DateTime;
 
 public class RecipeVersion extends RecipeVersion_Base implements Comparable<RecipeVersion>{
     
-    public  RecipeVersion(String title, String problem, String solution, String author, String tags) {
+    public  RecipeVersion(String title, String problem, String solution, String author,String difficulty, String tags) {
     	setTitle(title);
     	setProblem(problem);
     	setSolution(solution);
     	setAuthor(author);
+    	setDifficulty(difficulty);
     	setTags(tags);
     	setCreationTimestamp(new DateTime());
     }
