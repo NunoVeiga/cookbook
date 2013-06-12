@@ -1,6 +1,6 @@
 <html lang="en"><head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Receitas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -57,7 +57,7 @@ background-color:transparent;
                 <ul class="dropdown-menu">
                   <li></li>
                   <li><a href="/recipes">Amit Vaghela</a></li>
-                  <li><a href="/recipes">André Graça</a></li>
+                  <li><a href="/recipes">Andrï¿½ Graï¿½a</a></li>
                   <li><a href="/recipes">Diogo Ferreira</a></li>
                   <li><a href="/recipes">Nuno Veiga</a></li>
                 </ul>
