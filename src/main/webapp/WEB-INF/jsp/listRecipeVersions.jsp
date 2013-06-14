@@ -109,7 +109,7 @@ background-color:#b0e0e6;
           <p class="center"></p>
           <ul>
 <c:forEach var="recipe" items="${recipes}">
-	<a href="/recipes/${recipe.externalId}">${recipe.lastVersion.title}</a><br>
+	<a href="/recipes/${recipe.externalId}/detailedversion">${recipe.title}</a>    ${recipe.creationTimestamp}<br>
 </c:forEach>
 </ul>
 <input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/'"><p></p><p></p>

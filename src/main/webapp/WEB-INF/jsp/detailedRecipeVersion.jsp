@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en"><head>
-
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
 <script type="text/javascript" src="/static/js/bootstrap.js"></script>
@@ -107,12 +106,25 @@ background-color:#b0e0e6;
         <div class="span4">
           
           <p class="center"></p>
-          <ul>
-<c:forEach var="recipe" items="${recipes}">
-	<a href="/recipes/${recipe.externalId}">${recipe.lastVersion.title}</a><br>
-</c:forEach>
-</ul>
-<input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/'"><p></p><p></p>
+          <h1>${recipe.title}</h1>
+	<b>Problema:</b>
+	<p>${recipe.problem}</p>
+	<b>Solução:</b>
+	<p>${recipe.solution}</p>
+	<b>Autor:</b>
+	<p>${recipe.author}</p>
+	<b>Dificuldade:</b>
+	<p>${recipe.difficulty}</p>
+	<b>Tags:</b>
+	<p>${recipe.tags}</p>
+	<b>Data:</b>
+	<p>${recipe.creationTimestamp}</p>
+
+	
+    
+	<input type="button" value="Voltar" class="btn btn-inverse" onclick="JavaScript:window.location='/recipes'"/>
+    
+
           <p class="center"></p>
        </div>
         <div class="span4">

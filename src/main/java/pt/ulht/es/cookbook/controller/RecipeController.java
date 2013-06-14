@@ -52,7 +52,7 @@ public class RecipeController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
-	public String deleteTodoList(@PathVariable("id") String id) {
+	public String deleteRecipe(@PathVariable("id") String id) {
 		Recipe recipe = AbstractDomainObject.fromExternalId(id);
 		recipe.delete();
 		CookbookManager.getInstance().removeRecipe(recipe);
@@ -178,6 +178,30 @@ public class RecipeController {
 
 		return "redirect:/recipes/" + recipe.getExternalId();
 
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/versions")
+	public String versionsRecipe(@PathVariable("id") String id,Model model) {
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		
+		
+		List<RecipeVersion> recipes = new ArrayList<RecipeVersion>(recipe.getRecipeVersionSet());
+		Collections.sort(recipes);
+		model.addAttribute("recipes", recipes);
+		return "listRecipeVersions";
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/detailedversion")
+	public String showRecipeVersion(Model model, @PathVariable String id) {
+
+		RecipeVersion recipe = AbstractDomainObject.fromExternalId(id);
+		if (recipe != null) {
+			model.addAttribute("recipe", recipe);
+			return "detailedRecipeVersion";
+		} else {
+			return "recipeNotFound";
+		}
 	}
 
 }
