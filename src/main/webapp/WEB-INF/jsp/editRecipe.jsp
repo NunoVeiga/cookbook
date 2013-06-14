@@ -75,7 +75,7 @@ background-color:transparent;
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
+            <form method="POST" action="/" class="navbar-form pull-right">
               
 		<input type="text" name="aprocurar" class="input-large search-query">
 		<button type="submit" class="btn btn-search">Procurar Receita</button>

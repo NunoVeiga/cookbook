@@ -91,31 +91,37 @@ public class RecipeController {
 			for (int j = 0; j < recipes.size(); j++) {
 
 				if (recipes.get(j).getLastVersion().getTitle().toLowerCase()
-						.contains(palavrasaprocurar.get(i))) {
+						.contains(palavrasaprocurar.get(i).toLowerCase())) {
 
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getProblem()
-						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+						.toLowerCase().contains(palavrasaprocurar.get(i).toLowerCase())) {
 
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getSolution()
-						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+						.toLowerCase().contains(palavrasaprocurar.get(i).toLowerCase())) {
 
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getAuthor()
-						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+						.toLowerCase().contains(palavrasaprocurar.get(i).toLowerCase())) {
+
+					receitasdapesquisa.add(recipes.get(j));
+					continue;
+
+				}else if (recipes.get(j).getLastVersion().getDifficulty()
+						.toLowerCase().contains(palavrasaprocurar.get(i).toLowerCase())) {
 
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
 
 				} else if (recipes.get(j).getLastVersion().getTags()
-						.toLowerCase().contains(palavrasaprocurar.get(i))) {
+						.toLowerCase().contains(palavrasaprocurar.get(i).toLowerCase())) {
 
 					receitasdapesquisa.add(recipes.get(j));
 					continue;
